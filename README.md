@@ -1,16 +1,18 @@
-# rod
-REPLs On Docker
+# What is this?
+Rod is REPLs On Docker. Use rod for better programming einviroment.
+
+# Prerequisite 
+You need to install docker on your system to run rod.
 
 # Usage
-rod ruby
-rod scala
-rod go
+```bash
+$ rod scala
+```
 
 # Supporting Programming Languages and REPLs
 
-| Programming Language | REPL |
-| -------------------- | ---- |
-| Ruby | pry |
-| Scala | amm |
-| Go | gore |
-
+| Lang | Version | REPL | Pre-Installed Libraries |
+| ----- | -------| ---- | ----------------------------------- |
+| Scala | 2.12.4 | amm  | cats, shapeless, fs2, doobie, circe |
+| Ruby  | 2.4.3  | pry  | rubocop, guard                      |
+| Go    | 1.9.6  | gore | TBD                                 |
