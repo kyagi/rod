@@ -1,5 +1,5 @@
 # rod
-REPL On Docker
+REPLs On Docker
 
 # Usage
 rod ruby
