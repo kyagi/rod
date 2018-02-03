@@ -17,6 +17,13 @@ root@04eef017dfc0:~#
 $ rod scala
 ```
 
+or
+```
+$ git clone git@github.com:kyagi/rod.git
+$ cd rod
+$ ./rod scala
+```
+
 # Supporting Programming Languages and REPLs
 
 | Lang | Version | REPL | Pre-Installed Libraries |
