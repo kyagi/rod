@@ -17,7 +17,11 @@ RUN apt-get update && apt-get install -y apt-file && \
     apt-get install -y \
     ruby2.4=2.4.3-1bbox1~xenial1 ruby2.4-doc ruby2.4-dev ruby-build \
     pry \
-    bundler 
+    bundler
+
+RUN gem install \
+    rubocop \
+    guard
 
 ################################################################################
 # Scala
@@ -72,4 +76,7 @@ RUN go get -u github.com/motemen/gore \
 ################################################################################
 # Rod
 ################################################################################
+RUN touch /etc/repls-on-docker
+COPY ./rod /usr/local/bin/rod
+RUN chmod +x /usr/local/bin/rod
 CMD figlet REPLs on Docker && bash

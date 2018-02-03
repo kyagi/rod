@@ -1,11 +1,19 @@
 #!/bin/bash
 
+function help () {
+ echo "usage: rod [ruby|scala|go]"
+}
+
 lang=$1
 case $lang in
   ruby)  repl=pry;;
   scala) repl=amm;;
   go)    repl=gore;;
-  *)     repl=none;;
+  *)     help && exit;;
 esac
 
-docker run -it kyagi/rod $repl
+if [ -f /etc/repls-on-docker ]; then
+  $repl
+else
+  docker run -it kyagi/rod $repl
+fi
