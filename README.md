@@ -1,5 +1,5 @@
 # What is this?
-Rod is REPLs On Docker. Use rod for better programming experience.
+Rod is REPLs On Docker. Use rod for your better programming experience.
 
 # Prerequisite 
 You need to install docker on your system to run rod.
