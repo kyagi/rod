@@ -1,0 +1,11 @@
+#!/bin/bash
+
+lang=$1
+case $lang in
+  ruby)  repl=pry;;
+  scala) repl=amm;;
+  go)    repl=gore;;
+  *)     repl=none;;
+esac
+
+docker run -it kyagi/rod $repl
