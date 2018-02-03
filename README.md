@@ -21,4 +21,4 @@ $ rod scala
 | ----- | -------| ---- | ----------------------------------- |
 | [Scala](https://www.scala-lang.org/)  | 2.12.4 | [amm](https://github.com/lihaoyi/Ammonite) | cats, shapeless, fs2, doobie, circe |
 | [Ruby](https://www.ruby-lang.org/en/) | 2.4.3  | [pry](https://github.com/pry/pry)  | rubocop, guard |
-| [Go](https://golang.org/)             | 1.9.6  | gore | TBD                                 |
+| [Go](https://golang.org/)             | 1.9.6  | [gore](https://github.com/motemen/gore] | TBD |
