@@ -7,7 +7,35 @@ You need to install docker on your system to run rod.
 # Dockerhub
 https://hub.docker.com/r/kyagi/rod/
 
-# Usage
+# Basic Usage
+```
+$ git clone git@github.com:kyagi/rod.git
+$ cd rod
+$ ./rod scala
+```
+
+# Advanced Usage
+```
+$ git clone git@github.com:kyagi/rod.git
+$ cd rod
+$ ./rod start
+
+$ ./rod login
+root@c74ca33e8607:~# rod scala
+(... snip ...)
+root@c74ca33e8607:~# exit
+$
+
+$ ./rod login
+root@c74ca33e8607:~# rod ruby
+(... snip ...)
+root@c74ca33e8607:~# exit
+$
+
+$ ./rod stop
+```
+
+# Run docker container by yourself
 ```
 $ docker run -it kyagi/rod
  ____  _____ ____  _                         ____             _
@@ -17,13 +45,6 @@ $ docker run -it kyagi/rod
 |_| \_\_____|_|   |_____|___/  \___/|_| |_| |____/ \___/ \___|_|\_\___|_|
 
 root@04eef017dfc0:~# rod scala
-```
-
-or
-```
-$ git clone git@github.com:kyagi/rod.git
-$ cd rod
-$ ./rod scala
 ```
 
 # Rod prompt
