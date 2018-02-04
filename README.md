@@ -26,6 +26,10 @@ $ cd rod
 $ ./rod scala
 ```
 
+# Rod prompt
+Rod prompt makes it clear that you are in the rod docker container. Hope this helps. 
+<img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kyagi/20180204/20180204122952.png">
+
 # Supporting Programming Languages and REPLs
 
 | Lang | Version | REPL | Pre-Installed Libraries |
