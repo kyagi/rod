@@ -1,5 +1,5 @@
 # What is this?
-Rod is REPLs On Docker. Use rod for your better programming experience.
+Rod is *REPLs On Docker*. Use rod for your better programming experience.
 
 # Supporting Languages and REPLs
 
