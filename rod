@@ -1,9 +1,36 @@
 #!/bin/bash
 
+################################################################################
+# functions
+################################################################################
 function help () {
- echo "usage: rod [ruby|scala|go]"
+ echo "usage: rod [start|login|stop|ruby|scala|go]"
 }
 
+################################################################################
+# action sequence
+################################################################################
+[ -z $1 ] && help && exit
+action=$1
+if [ $action == "start" ] && [ ! -f /etc/repls-on-docker ]; then
+  if docker ps | grep -q rod; then
+    echo 'rod has already started, try `rod login` to enter the container'
+    exit
+  fi
+  ttl=86400
+  docker run -d --name rod kyagi/rod sh -c "while true; do sleep $ttl; done"
+  exit
+elif [ $action == "login" ] && [ ! -f /etc/repls-on-docker ] && docker ps | grep -q rod; then
+  docker exec -it rod bash
+  exit
+elif [ $action == "stop" ] && [ ! -f /etc/repls-on-docker ] && docker ps | grep -q rod; then
+  (docker stop rod; docker rm rod) > /dev/null
+  exit
+fi
+
+################################################################################
+# repl sequence
+################################################################################
 lang=$1
 case $lang in
   ruby)  repl=pry;;
