@@ -57,6 +57,7 @@ import $ivy.`org.tpolecat::doobie-scalatest:0.5.0-RC1`\n\
 import $ivy.`io.circe::circe-core:0.9.1`\n\
 import $ivy.`io.circe::circe-generic:0.9.1`\n\
 import $ivy.`io.circe::circe-parser:0.9.1`\n\
+import $ivy.`org.scalaz::scalaz-core:7.2.19`\n\
 ' > /root/.ammonite/predef.sc
 
 # Cache libraries.
