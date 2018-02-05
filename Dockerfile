@@ -1,5 +1,18 @@
 FROM ubuntu:16.04
-MAINTAINER Kazuo Yagi <kazuo.yagi@gmal.com>
+LABEL maintainer "Kazuo Yagi <kazuo.yagi@gmail.com>"
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL \
+    org.label-schema.build-date=$BUILD_DATE \
+    org.label-schema.docker.dockerfile="/Dockerfile" \
+    org.label-schema.license="GNU GENERAL PUBLIC LICENSE Version 3" \
+    org.label-schema.name="kyagi/rod" \
+    org.label-schema.url="https://github.com/kyagi/rod" \
+    org.label-schema.vcs-ref=$VCS_REF \
+    org.label-schema.vcs-type="Git" \
+    org.label-schema.vcs-url="https://github.com/kyagi/rod"
 
 ################################################################################
 # Misc
