@@ -4,7 +4,11 @@
 # functions
 ################################################################################
 function help () {
- echo "usage: rod [start|login|stop|ruby|scala|go]"
+ echo "usage: rod [start|login|stop|ruby|scala|go]" && exit
+}
+
+function do_nothing_in_container () {
+  echo "In container, action argument is useless" && exit
 }
 
 ################################################################################
@@ -12,21 +16,44 @@ function help () {
 ################################################################################
 [ -z $1 ] && help && exit
 action=$1
-if [ $action == "start" ] && [ ! -f /etc/repls-on-docker ]; then
-  if docker ps | grep -q rod; then
-    echo 'rod has already started, try `rod login` to enter the container'
-    exit
-  fi
-  ttl=86400
-  docker run -d --name rod kyagi/rod sh -c "while true; do sleep $ttl; done"
-  exit
-elif [ $action == "login" ] && [ ! -f /etc/repls-on-docker ] && docker ps | grep -q rod; then
-  docker exec -it rod bash
-  exit
-elif [ $action == "stop" ] && [ ! -f /etc/repls-on-docker ] && docker ps | grep -q rod; then
-  (docker stop rod; docker rm rod) > /dev/null
-  exit
-fi
+case $action in
+  start)
+    if [ ! -f /etc/repls-on-docker ]; then
+      if docker ps | grep -q rod; then
+        echo 'rod has already started, try `rod login` to enter the container' && exit
+      else
+        ttl=86400
+        docker run -d --name rod kyagi/rod sh -c "while true; do sleep $ttl; done" && exit
+      fi
+    else
+      do_nothing_in_container
+    fi
+    ;;
+  login)
+    if [ ! -f /etc/repls-on-docker ]; then
+      if docker ps | grep -q rod; then
+        docker exec -it rod bash && exit
+      else
+        echo 'You need to `rod start` before login' && exit
+      fi
+    else
+      do_nothing_in_container
+    fi
+    ;;
+  stop)
+    if [ ! -f /etc/repls-on-docker ]; then
+      if docker ps | grep -q rod; then
+        (docker stop rod; docker rm rod) > /dev/null && exit
+      else
+        echo 'No rod container, nothing to do' && exit
+      fi
+    else
+      do_nothing_in_container
+    fi
+    ;;
+  ruby|scala|go) : ;;
+  *) help;;
+esac
 
 ################################################################################
 # repl sequence
@@ -36,7 +63,7 @@ case $lang in
   ruby)  repl=pry;;
   scala) repl=amm;;
   go)    repl=gore;;
-  *)     help && exit;;
+  *)     help;;
 esac
 
 if [ -f /etc/repls-on-docker ]; then
