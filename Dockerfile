@@ -77,7 +77,9 @@ RUN go get -u github.com/motemen/gore \
 # Rod
 ################################################################################
 RUN touch /etc/repls-on-docker
+WORKDIR /root
 COPY ./rod-prompt /root/.rod-prompt
 COPY ./rod /usr/local/bin/rod
+RUN echo '. .rod-prompt' >> .bashrc
 RUN chmod +x /usr/local/bin/rod
 CMD figlet REPLs on Docker && bash
