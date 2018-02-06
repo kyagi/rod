@@ -4,7 +4,7 @@
 # functions
 ################################################################################
 function help () {
- echo "usage: rod [start|login|stop|ruby|scala|go]" && exit
+ echo "usage: rod [start|login|stop|ruby|pry|scala|amm|go|gore]" && exit
 }
 
 function do_nothing_in_container () {
@@ -51,7 +51,7 @@ case $action in
       do_nothing_in_container
     fi
     ;;
-  ruby|scala|go) : ;;
+  ruby|scala|go|pry|amm|gore) : ;;
   *) help;;
 esac
 
@@ -60,9 +60,9 @@ esac
 ################################################################################
 lang=$1
 case $lang in
-  ruby)  repl=pry;;
-  scala) repl=amm;;
-  go)    repl=gore;;
+  ruby|pry)  repl=pry;;
+  scala|amm) repl=amm;;
+  go|gore)    repl=gore;;
   *)     help;;
 esac
 
