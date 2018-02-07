@@ -62,7 +62,7 @@ lang=$1
 case $lang in
   ruby|pry)  repl=pry;;
   scala|amm) repl=amm;;
-  go|gore)    repl=gore;;
+  go|gore)   repl=gore;;
   *)     help;;
 esac
 
