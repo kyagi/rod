@@ -32,9 +32,9 @@ RUN apt-get update && apt-get install -y apt-file && \
     pry \
     bundler
 
-RUN gem install \
-    rubocop \
-    guard
+#RUN gem install \
+#    rubocop \
+#    guard
 
 ################################################################################
 # Scala
